@@ -13,12 +13,12 @@
 matches:
   # Simple text replacement
   - trigger: ":esp "
-    replace: ""
+    replace: "{{esp}}"
     vars:
-      - name: dummy
+      - name: esp
         type: shell
         params:
-          cmd: 'cmd /c "C:\Users\zedou\AppData\Roaming\espanso\scripts\launch_vscode_espanso.bat"'
+          cmd: 'powershell -Command "Start-Process code -ArgumentList ''C:\Users\zedou\AppData\Roaming\espanso''"'
 
   - trigger: ":sign "
     replace: "Cordialement,\nMathieu Gros"
@@ -76,12 +76,12 @@ matches:
 
   # Open mg-notes-v01 in VS Code with :no
   - trigger: ":no "
-    replace: ""
+    replace: "{{notes}}"
     vars:
-      - name: dummy
+      - name: notes
         type: shell
         params:
-          cmd: 'cmd /c "C:\Users\zedou\AppData\Roaming\espanso\scripts\launch_notes.bat"'
+          cmd: 'powershell -Command "Start-Process code -ArgumentList ''D:\MGS\AI\_DEV\mg-notes-v01''"'
 
   # Launch VS Code with :vs
   - trigger: ":vs "
