@@ -12,7 +12,7 @@
 
 matches:
   # Simple text replacement
-  - trigger: ":espanso "
+  - trigger: ":esp "
     replace: "{{esp}}"
     vars:
       - name: esp
