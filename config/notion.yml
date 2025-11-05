@@ -1,0 +1,6 @@
+# Exemple pour exclure une app
+#filter_exec: Notion
+# filter_exec: Perplexity
+# enable: false
+# extra_excludes:
+#   - ../match/packages/zed-AI-prompts/zed-AI-prompts/package.yml

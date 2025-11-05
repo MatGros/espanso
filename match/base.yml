@@ -1,0 +1,123 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  # Simple text replacement
+  - trigger: ":espanso "
+    replace: "Hi there!"
+  # - trigger: ":espanso"
+  #   vars:
+  #     - name: output
+  #       type: shell
+  #         cmd: C:\Users\zedou\AppData\Local\0install.net\implementations\sha256new_KWZO3BD3RK7XIZR4T3TUKWALWUEI3L2C6LK6RWAEP7FZZ5HOCCDQ\DeepL.exe #'<Exécuter le script shell> ; echo "<texte de remplacement>"'
+
+  - trigger: ":sign "
+    replace: "Cordialement,\nMathieu Gros"
+
+  - trigger: ":mail "
+    replace: "mathieu.gros@gmail.com"
+
+  - trigger: ":mailz "
+    replace: "zedou666@hotmail.com"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date "
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell "
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+
+  - triggers: [":1 ", ":lbc "]
+    replace: "Bonjour, votre bien m'intéresse, est-il toujours disponible ?
+      \nEst il visitable rapidement ?
+      \nPour être clair voici ma situation temporaire actuelle :
+      \n- en AT jusqu'à début 2026.
+      \n- Salaire précédent 3800€net et RC début septembre (possibilité avance loyer)
+      \n- Possiblité garants x2 parent retaite dont un 2000€/mois + locations
+      \nJe préfère être direct pour éviter toutes mauvaises surprises.
+      \nCordialement,"
+    label: "LBC Bonjour, votre bien m'intéresse,"
+
+# Launchers for Applications
+  # Launch Perplexity with :per
+  - trigger: ":pe "
+    replace: "{{perplexity}}"
+    vars:
+      - name: perplexity
+        type: shell
+        params:
+          cmd: "powershell -Command \"Start-Process 'C:\\Users\\zedou\\AppData\\Local\\Programs\\Perplexity\\Perplexity.exe'\""
+
+  # Open Notion in Chrome with :no
+  - trigger: ":no "
+    replace: "{{notion}}"
+    vars:
+      - name: notion
+        type: shell
+        params:
+          cmd: "powershell -Command \"Start-Process 'C:\\Users\\zedou\\AppData\\Local\\Programs\\Notion\\Notion.exe'\""
+
+  # Launch VS Code with :vs
+  - trigger: ":vs "
+    replace: "{{vscode}}"
+    vars:
+      - name: vscode
+        type: shell
+        params:
+          cmd: "powershell -Command \"Start-Process 'code'\""
+
+#launchers for web apps
+  # Open Gemini in Chrome with :gem
+  - trigger: ":ge "
+    replace: "{{gemini}}"
+    vars:
+      - name: gemini
+        type: shell
+        params:
+          cmd: "powershell -Command \"Start-Process 'chrome' -ArgumentList 'https://gemini.google.com'\""
+
+  # Open Claude AI in Chrome with :cl
+  - trigger: ":cl "
+    replace: "{{claude}}"
+    vars:
+      - name: claude
+        type: shell
+        params:
+          cmd: "powershell -Command \"Start-Process 'chrome' -ArgumentList 'https://claude.ai'\""
+
+  # Open Hugging Face in Chrome with :hf
+  - trigger: ":hf "
+    replace: "{{huggingface}}"
+    vars:
+      - name: huggingface
+        type: shell
+        params:
+          cmd: "powershell -Command \"Start-Process 'chrome' -ArgumentList 'https://huggingface.co'\""
+
+
