@@ -18,7 +18,7 @@ matches:
       - name: esp
         type: shell
         params:
-          cmd: 'powershell -Command "Start-Process code -ArgumentList ''C:\Users\zedou\AppData\Roaming\espanso''"'
+          cmd: 'powershell -Command "& code ''C:\Users\zedou\AppData\Roaming\espanso''"'
 
   - trigger: ":sign "
     replace: "Cordialement,\nMathieu Gros"
@@ -81,7 +81,7 @@ matches:
       - name: notes
         type: shell
         params:
-          cmd: 'powershell -Command "Start-Process code -ArgumentList ''D:\MGS\AI\_DEV\mg-notes-v01''"'
+          cmd: 'powershell -Command "& code ''D:\MGS\AI\_DEV\mg-notes-v01''"'
 
   # Launch VS Code with :vs
   - trigger: ":vs "
