@@ -13,12 +13,12 @@
 matches:
   # Simple text replacement
   - trigger: ":espanso "
-    replace: "Hi there!"
-  # - trigger: ":espanso"
-  #   vars:
-  #     - name: output
-  #       type: shell
-  #         cmd: C:\Users\zedou\AppData\Local\0install.net\implementations\sha256new_KWZO3BD3RK7XIZR4T3TUKWALWUEI3L2C6LK6RWAEP7FZZ5HOCCDQ\DeepL.exe #'<Exécuter le script shell> ; echo "<texte de remplacement>"'
+    replace: "{{esp}}"
+    vars:
+      - name: esp
+        type: shell
+        params:
+          cmd: 'powershell -Command "Start-Process code -ArgumentList ''C:\Users\zedou\AppData\Roaming\espanso''"'
 
   - trigger: ":sign "
     replace: "Cordialement,\nMathieu Gros"
@@ -72,16 +72,16 @@ matches:
       - name: perplexity
         type: shell
         params:
-          cmd: "powershell -Command \"Start-Process 'C:\\Users\\zedou\\AppData\\Local\\Programs\\Perplexity\\Perplexity.exe'\""
+          cmd: 'powershell -Command "Start-Process ''C:\Users\zedou\AppData\Local\Programs\Perplexity\Perplexity.exe''"'
 
-  # Open Notion in Chrome with :no
+  # Open mg-notes-v01 in VS Code with :no
   - trigger: ":no "
-    replace: "{{notion}}"
+    replace: "{{notes}}"
     vars:
-      - name: notion
+      - name: notes
         type: shell
         params:
-          cmd: "powershell -Command \"Start-Process 'C:\\Users\\zedou\\AppData\\Local\\Programs\\Notion\\Notion.exe'\""
+          cmd: 'powershell -Command "Start-Process code -ArgumentList ''D:\MGS\AI\_DEV\mg-notes-v01''"'
 
   # Launch VS Code with :vs
   - trigger: ":vs "
@@ -90,7 +90,7 @@ matches:
       - name: vscode
         type: shell
         params:
-          cmd: "powershell -Command \"Start-Process 'code'\""
+          cmd: 'powershell -Command "Start-Process code"'
 
 #launchers for web apps
   # Open Gemini in Chrome with :gem
@@ -100,7 +100,7 @@ matches:
       - name: gemini
         type: shell
         params:
-          cmd: "powershell -Command \"Start-Process 'chrome' -ArgumentList 'https://gemini.google.com'\""
+          cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://gemini.google.com''"'
 
   # Open Claude AI in Chrome with :cl
   - trigger: ":cl "
@@ -109,7 +109,7 @@ matches:
       - name: claude
         type: shell
         params:
-          cmd: "powershell -Command \"Start-Process 'chrome' -ArgumentList 'https://claude.ai'\""
+          cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://claude.ai''"'
 
   # Open Hugging Face in Chrome with :hf
   - trigger: ":hf "
@@ -118,6 +118,6 @@ matches:
       - name: huggingface
         type: shell
         params:
-          cmd: "powershell -Command \"Start-Process 'chrome' -ArgumentList 'https://huggingface.co'\""
+          cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://huggingface.co''"'
 
 
