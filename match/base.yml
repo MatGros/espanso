@@ -74,14 +74,32 @@ matches:
         params:
           cmd: 'powershell -Command "Start-Process ''C:\Users\zedou\AppData\Local\Programs\Perplexity\Perplexity.exe''"'
 
-  # Open mg-notes-v01 in VS Code with :no
+  # Open mgs note with :no (Obsidian)
   - trigger: ":no "
     replace: "{{notes}}"
     vars:
       - name: notes
         type: shell
         params:
-          cmd: 'powershell -Command "Start-Process code -ArgumentList ''D:\MGS\AI\_DEV\mg-notes-v01''"'
+          cmd: 'powershell -Command "Start-Process ''D:\Users\zedou\AppData\Local\Programs\Obsidian\Obsidian.exe''"'
+ 
+ # Open mgs note with :no (VScode)
+  - trigger: ":novs "
+    replace: "{{notes}}"
+    vars:
+      - name: notes
+        type: shell
+        params:
+          cmd: 'powershell -Command "Start-Process code -ArgumentList ''D:\MGS\NOTE🗒️''"'
+ 
+# Open mgs note with :no (VScode)
+  - trigger: ":mgsvs "
+    replace: "{{notes}}"
+    vars:
+      - name: notes
+        type: shell
+        params:
+          cmd: 'powershell -Command "Start-Process code -ArgumentList ''D:\MGS''"'
 
   # Launch VS Code with :vs
   - trigger: ":vs "
@@ -120,4 +138,12 @@ matches:
         params:
           cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://huggingface.co''"'
 
+  # Open Hugging Face in Chrome with :hf
+  - trigger: ":git "
+    replace: "{{git}}"
+    vars:
+      - name: git
+        type: shell
+        params:
+          cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://github.com/MatGros?tab=repositories''"'
 
