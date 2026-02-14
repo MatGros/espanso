@@ -129,6 +129,24 @@ matches:
         params:
           cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://claude.ai''"'
 
+  # Claude Code CLI launcher and helper
+  - trigger: ":claudecli "
+    replace: "{{claudecli}}"
+    vars:
+      - name: claudecli
+        type: shell
+        params:
+          cmd: 'powershell -Command "Start-Process claude -ArgumentList ''--dangerously-skip-permissions --chrome''"'
+
+  - trigger: ":claudecmd "
+    replace: "claude --dangerously-skip-permissions --chrome"
+    label: "Claude Code CLI command (copy/paste)"
+
+  # Open Ollama avec claude code :ol c
+  - triggers: [":ol c ", ":ollama c "]
+    replace: "ollama launch claude --config"
+    label: "Ollama — Claude: launch command"
+
   # Open Hugging Face in Chrome with :hf
   - trigger: ":hf "
     replace: "{{huggingface}}"
