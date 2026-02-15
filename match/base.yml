@@ -120,14 +120,29 @@ matches:
         params:
           cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://gemini.google.com''"'
 
-  # Open Claude AI in Chrome with :cl
+  # Claude quick form — short `:cl` (choose web or CLI + args)
   - trigger: ":cl "
-    replace: "{{claude}}"
+    replace: "{{claude_action}}"
     vars:
-      - name: claude
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Mode [[mode]]
+            Arguments [[args]]
+          fields:
+            mode:
+              type: choice
+              values:
+                - web
+                - cli
+              default: cli
+            args:
+              default: --dangerously-skip-permissions --chrome
+      - name: claude_action
         type: shell
         params:
-          cmd: 'powershell -Command "Start-Process chrome -ArgumentList ''https://claude.ai''"'
+          cmd: 'powershell -Command "if (''{{form1.mode}}'' -eq ''web'') { Start-Process chrome -ArgumentList ''https://claude.ai'' } else { Start-Process claude -ArgumentList ''{{form1.args}}'' }"'
 
   # Claude Code CLI launcher and helper
   - trigger: ":claudecli "
