@@ -21,6 +21,19 @@ Prochaines étapes suggérées
 2. Ajouter un `CONTRIBUTING.md` avec procédures de PR et tests.
 3. Mettre à jour les manifests pour référencer le repo GitHub.
 
+
 ---
 
-Si vous voulez, je peux appliquer ces changements supplémentaires (CONTRIBUTING, manifests, etc.).
+Analyse rapide des fichiers `match/base.yml` et `match/packages/zed-AI-prompts/package.yml`
+
+- `match/base.yml` : définitions globales — snippets et launchers (ex. `:vs`, `:ge`, `:cl`, `:date`, `:git`).
+- `zed-AI-prompts/package.yml` : collection spécialisée de *prompts LLM* (ex. `:coder`, `:review`, `:explain`, `:autom`).
+
+Commandes candidates au déplacement (actuellement dans `zed-AI-prompts/package.yml`) :
+- `:runserver`, `:runserver2`, `:run` — utilitaires d'exécution/serveur (dev tooling) → recommandé : les déplacer dans un package `dev-tools/` ou dans `base.yml`.
+
+Souhaitez‑vous que je déplace ces commandes maintenant ? (je peux aussi renommer `:run` pour lever l'ambiguïté). 
+
+---
+
+Si vous voulez, je peux appliquer ces changements supplémentaires (CONTRIBUTING, manifests, déplacer commandes, etc.).
