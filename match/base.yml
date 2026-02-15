@@ -111,7 +111,7 @@ matches:
           cmd: 'powershell -Command "Start-Process code"'
 
 #launchers for web apps
-  # Open Gemini in Chrome with :gem
+  # Open Gemini in Chrome with :ge 
   - trigger: ":ge "
     replace: "{{gemini}}"
     vars:
@@ -145,10 +145,10 @@ matches:
           cmd: 'powershell -Command "if (''{{form1.mode}}'' -eq ''web'') { Start-Process chrome -ArgumentList ''https://claude.ai'' } else { Start-Process claude -ArgumentList ''{{form1.args}}'' }"'
 
   # Claude Code CLI launcher and helper
-  - trigger: ":claudecli "
-    replace: "{{claudecli}}"
+  - trigger: ":clcli "
+    replace: "{{clcli}}"
     vars:
-      - name: claudecli
+      - name: clcli
         type: shell
         params:
           cmd: 'powershell -Command "Start-Process claude -ArgumentList ''--dangerously-skip-permissions --chrome''"'
