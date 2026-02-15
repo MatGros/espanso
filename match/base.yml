@@ -144,14 +144,10 @@ matches:
         params:
           cmd: 'powershell -Command "if (''{{form1.mode}}'' -eq ''web'') { Start-Process chrome -ArgumentList ''https://claude.ai'' } else { Start-Process claude -ArgumentList ''{{form1.args}}'' }"'
 
-  # Claude Code CLI launcher and helper
+  # Claude Code CLI helper — insert command (do NOT execute)
   - trigger: ":clcli "
-    replace: "{{clcli}}"
-    vars:
-      - name: clcli
-        type: shell
-        params:
-          cmd: 'powershell -Command "Start-Process claude -ArgumentList ''--dangerously-skip-permissions --chrome''"'
+    replace: "claude --dangerously-skip-permissions --chrome"
+    label: "Claude Code CLI (insert command, copy/paste)"
 
   - trigger: ":claudecmd "
     replace: "claude --dangerously-skip-permissions --chrome"
