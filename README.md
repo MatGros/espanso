@@ -1,39 +1,82 @@
-# Espanso — collection de paquets (local)
+# ✨ Espanso — Collection de Paquets (Local)
 
-Ce dossier contient des paquets Espanso personnalisés destinés à un usage local ou à la distribution (voir `match/packages/`).
+Un workspace local pour vos *matches* Espanso (snippets, prompts et launchers). Conçu pour usage personnel **et** partage éventuel (packages dans `match/packages/`).
 
-Références principales
-- Projet Espanso (upstream) : https://github.com/espanso/espanso
-- Documentation Espanso : https://espanso.org/docs/
+## 📚 Ressources Utiles
 
-But / Utilisation
-- Ce workspace regroupe des paquets (prompts, configurations) pour Espanso.
-- Le paquet `zed-AI-prompts` fournit des modèles de prompts utiles pour préparer du code ou s'informer sur les bonnes pratiques avant de programmer.
+- 🔗 [Projet Espanso](https://github.com/espanso/espanso)
+- 📖 [Documentation Officielle](https://espanso.org/docs/)
+- 🌐 [Site Web](https://espanso.org)
 
-Recommandations pour l'architecture de la documentation
-- Centraliser la documentation : garder un `README.md` à la racine + README par paquet.
-- Ajouter `CONTRIBUTING.md` et `CODE_OF_CONDUCT.md` si contributions externes prévues.
-- Ajouter le champ `repository` dans `_manifest.yml` / `package.yml` pour chaque paquet.
-- Considérer un dossier `docs/` pour guidance, exemples et procédures de contribution.
+## 🎯 Objectifs
 
-Prochaines étapes suggérées
-1. Harmoniser les `README.md` par paquet et centraliser les consignes.
-2. Ajouter un `CONTRIBUTING.md` avec procédures de PR et tests.
-3. Mettre à jour les manifests pour référencer le repo GitHub.
+- ✅ Centraliser vos paquets Espanso (prompts LLM, launchers, snippets)
+- ✅ Fournir des outils rapides pour développer, tester et partager des paquets
+- ✅ Maintenir une structure modulaire et réutilisable
 
+## 📂 Structure du Projet
+
+```
+.
+├── match/                      # Définitions Espanso
+│   ├── base.yml               # Configuration de base
+│   └── packages/              # Paquets exportables
+│       ├── zed-AI-prompts/   # Prompts LLM professionnels
+│       └── calc/              # Utilitaires de calcul
+├── config/                     # Options de configuration
+│   ├── default.yml
+│   └── notion.yml
+└── README.md                   # Ce fichier
+```
+
+## 🚀 Démarrage Rapide
+
+```bash
+# Installer un paquet local
+espanso install zed-AI-prompts
+
+# Ouvrir l'éditeur de configuration
+espanso edit
+
+# Recharger Espanso après modification
+espanso restart
+```
+
+## 💡 Conventions et Bonnes Pratiques
+
+- **Triggers avec menu** : Utilisez `:pr ` (notez l'espace terminal) pour ouvrir le menu de prompts
+- **Séparation des responsabilités** : Séparez les *prompts* (contenu LLM) des *launchers* (exécution/shell)
+- **Documentation** : Documentez chaque package via un `README.md` local
+- **Nommage** : Utilisez des triggers explicites et mémorables
+
+## 🔧 Développement & Maintenance
+
+### Recommandations (priorisées)
+
+1. 📦 Créer un package `dev-tools/` pour les utilitaires (`:runserver`, `:runserver2`, `:run`)
+2. 📋 Ajouter `CONTRIBUTING.md` et `CODE_OF_CONDUCT.md` si partage/publication planifiée
+3. 🔗 Ajouter le champ `repository` dans les manifests pour faciliter le lien vers GitHub
+
+Each package in `match/packages/` has its own README.md with full documentation.
 
 ---
 
-Analyse rapide des fichiers `match/base.yml` et `match/packages/zed-AI-prompts/package.yml`
+## 📝 Licence
 
-- `match/base.yml` : définitions globales — snippets et launchers (ex. `:vs`, `:ge`, `:cl`, `:date`, `:git`).
-- `zed-AI-prompts/package.yml` : collection spécialisée de *prompts LLM* (ex. `:coder`, `:review`, `:explain`, `:autom`).
+Ce dépôt est **licencié sous la GNU GPL v3.0** (GPL‑3.0). Voir le fichier `LICENSE` à la racine.
 
-Commandes candidates au déplacement (actuellement dans `zed-AI-prompts/package.yml`) :
-- `:runserver`, `:runserver2`, `:run` — utilitaires d'exécution/serveur (dev tooling) → recommandé : les déplacer dans un package `dev-tools/` ou dans `base.yml`.
+Ce que cela signifie :
 
-Souhaitez‑vous que je déplace ces commandes maintenant ? (je peux aussi renommer `:run` pour lever l'ambiguïté). 
+- ✅ Vous pouvez utiliser, modifier et redistribuer ces fichiers
+- ✅ Toute redistribution de travaux dérivés doit conserver la même licence (GPL‑3.0)
+- ℹ️ Pour un usage strictement local, aucune action n'est nécessaire
 
 ---
 
-Si vous voulez, je peux appliquer ces changements supplémentaires (CONTRIBUTING, manifests, déplacer commandes, etc.).
+## 👤 Auteur
+
+Mathieu Gros — `mathieu.gros@gmail.com` (2026)
+
+---
+
+**Contributions bienvenues !** Si vous souhaitez améliorer ce projet, n'hésitez pas à soumettre une PR ou une issue.
